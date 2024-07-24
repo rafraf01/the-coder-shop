@@ -1,0 +1,5 @@
+.stroke-text {
+    -webkit-text-stroke: 1px #1e293b;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
