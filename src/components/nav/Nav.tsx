@@ -1,33 +1,45 @@
 import { FaCartShopping } from "react-icons/fa6";
 import { CgMenuRightAlt } from "react-icons/cg";
 import Button from "../button/Button";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const navigationMenu = ["Home", "Products", "About"];
   return (
-    <nav className="navigation-wrapper z-[100] px-6 py-4 w-full sticky top-0 bg-white">
-      <div className="flex justify-between w-full rounded-3xl border-[1px] py-2 px-4 border-gray-400 items-center bg-white">
-        <CgMenuRightAlt className="xl:hidden block cursor-pointer" />
-        <div className="nav-left-item cursor-pointer font-climatecrisis font-light text-xl">
-          <p>Budol Shop</p>
+    <nav className="navigation-wrapper sticky top-0 z-[100] w-full bg-white px-6 py-4">
+      <div className="flex w-full items-center justify-between rounded-3xl border-[1px] border-gray-400 bg-white px-4 py-2">
+        <CgMenuRightAlt className="block cursor-pointer xl:hidden" />
+        <div className="nav-left-item cursor-pointer font-climatecrisis text-xl font-light">
+          <Link to={"/"}>Budol Shop</Link>
         </div>
         <div className="">
-          <ul
-            className="hidden xl:flex flex-col gap-10 xl:flex-row items-center text-xl"
-          >
-            {navigationMenu.map((nav) => (
-              <li
-                key={nav}
-                className="relative z-10 mix-blend-difference text-white font-urbanist xl:hover:cursor-pointer hover:text-stone-400"
-              >
-                <a>{nav}</a>
-              </li>
-            ))}
+          <ul className="hidden flex-col items-center gap-10 text-xl xl:flex xl:flex-row">
+            {navigationMenu.map((nav) => {
+              const link =
+                nav.toLowerCase() === "home" ? "" : nav.toLowerCase();
+              return (
+                <li
+                  key={nav}
+                  className="relative z-10 font-urbanist hover:text-stone-400 xl:hover:cursor-pointer"
+                >
+                  <NavLink
+                    to={link}
+                    className={({ isActive }) =>
+                      `${isActive && "text-black underline underline-offset-4"}`
+                    }
+                  >
+                    {nav}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </div>
-        <div className="flex justify-center items-center gap-5">
-          <Button className="border-[1px] rounded-full py-2 px-4 font-urbanist cursor-pointer hover:bg-gray-200/30 hover:border-stone-400 hover:text-stone-400">Sign in</Button>
-          <FaCartShopping className="xl:hover:cursor-pointer hover:text-stone-400" />
+        <div className="flex items-center justify-center gap-3">
+          <Button className="cursor-pointer rounded-full border-[1px] px-4 py-2 font-urbanist hover:border-stone-400 hover:bg-gray-200/30 hover:text-stone-400">
+            Sign in
+          </Button>
+          <FaCartShopping className="hover:text-stone-400 xl:hover:cursor-pointer" />
         </div>
       </div>
     </nav>
