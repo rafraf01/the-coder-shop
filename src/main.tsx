@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import RootLayout from "./RootLayout.tsx";
 import Home from "./components/pages/home/Home.tsx";
-import Product from "./components/pages/product/Product.tsx";
 import NotFound from "./components/pages/not-found/NotFound.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient({
@@ -29,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="products" element={<Suspense>
         <ProductsPage />
       </Suspense>}>
-        <Route path=":productid" element={<Product />}></Route>
+        <Route path=":productid" element={<ProductsPage />}></Route>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>

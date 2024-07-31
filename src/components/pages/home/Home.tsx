@@ -25,7 +25,7 @@ const Home = () => {
           </p>
         </div>
       </TextBlock>
-      <div className="py-4 px-20">
+      <div className="container mx-auto px-[1.5rem] xl:px-0">
         <h1 className="font-climatecrisis text-2xl tracking-widest mb-5">Related Products</h1>
         {productData && <ProductCard products={productData} />}
       </div>

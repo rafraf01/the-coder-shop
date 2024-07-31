@@ -9,8 +9,8 @@ const Nav = () => {
     <nav className="navigation-wrapper sticky top-0 z-[100] w-full bg-white px-6 py-4">
       <div className="flex w-full items-center justify-between rounded-3xl border-[1px] border-gray-400 bg-white px-4 py-2">
         <CgMenuRightAlt className="block cursor-pointer xl:hidden" />
-        <div className="nav-left-item cursor-pointer font-climatecrisis text-xl font-light">
-          <Link to={"/"}>Budol Shop</Link>
+        <div className="nav-left-item cursor-pointer font-climatecrisis text-xl stroke-text text-transparent font-semibold">
+          <Link to={"/"}>The React Shop</Link>
         </div>
         <div className="">
           <ul className="hidden flex-col items-center gap-10 text-xl xl:flex xl:flex-row">

@@ -2,6 +2,7 @@ import Nav from "./components/nav/Nav";
 import { Outlet } from "react-router-dom";
 import Loader from "./components/loader/Loader";
 import { useProduct } from "./components/hooks/useProductQuery";
+import Footer from "./components/footer/Footer";
 
 const Layout = () => {
   const { isLoading, data: products = [] } = useProduct();
@@ -16,6 +17,7 @@ const Layout = () => {
       <main>
         <Outlet context={{products}}/>
       </main>
+      <Footer />
     </>
   );
 };

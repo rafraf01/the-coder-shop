@@ -25,18 +25,18 @@ const ProductCard = ({ products }: Products) => {
                   <img 
                     src={images[0].replace(/[[\]\"]/g, "")}
                     onError={({currentTarget}) => currentTarget.src = FallbackImage}
-                    className="h-90 mb-7 min-h-52 w-full self-stretch rounded-md object-cover"
+                    className="h-90 mb-7 min-h-52 w-full self-stretch rounded-md object-cover cursor-pointer"
                     />
                 </a>
                 <div className="font-urbanist">
-                  <p className="mb-5 text-xl font-semibold">{title}</p>
+                  <p className="mb-5 text-xl font-semibold h-[56px]">{title}</p>
                 </div>
                 <div className="mt-5 flex items-center justify-between">
                   <div>
                     <p className="text-xs text-gray-500">Price</p>
                     <p className="text-xl font-bold">$ {price}</p>
                   </div>
-                  <span className="cursor-pointer self-end rounded-md bg-black p-2 text-sm text-white">
+                  <span className="cursor-pointer self-end rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-black">
                     <LuShoppingCart />
                   </span>
                 </div>
