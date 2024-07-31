@@ -1,7 +1,14 @@
 import Hero from "../../hero/Hero";
+import ProductCard from "../../product-card/ProductCard";
 import TextBlock from "../../text-block/TextBlock";
+import { useOutletContext } from "react-router-dom";
+import { Products } from "../../../types/types";
 
 const Home = () => {
+  const {products} = useOutletContext<Products>();
+  
+  const productData = [...products].slice(0, 9);
+
   return (
     <section id="home">
       <Hero />
@@ -18,6 +25,10 @@ const Home = () => {
           </p>
         </div>
       </TextBlock>
+      <div className="py-4 px-20">
+        <h1 className="font-climatecrisis text-2xl tracking-widest mb-5">Related Products</h1>
+        {productData && <ProductCard products={productData} />}
+      </div>
     </section>
   );
 };
