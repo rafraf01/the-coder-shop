@@ -2,11 +2,13 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Products } from "../../types/types";
 import FallbackImage from '../../assets/image/fallback.jpg';
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 
 
 const ProductCard = ({ products }: Products) => {
   const [productData, setProductData] = useState(products);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setProductData(productData);
@@ -15,19 +17,20 @@ const ProductCard = ({ products }: Products) => {
   return <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 lg:gap-7 gap-4 m-auto">
     {
         products.map((product) => {
-          const {title, images,  price} = product
+          const {title, images,  price} = product;
+          const path = pathname === '/' ? `products/${product.id}` : `${product.id}`;
             return (
               <div
                 key={product.id}
                 className="rounded-md border p-5 drop-shadow-xl"
               >
-                <a>
+                <Link to={path}>
                   <img 
                     src={images[0].replace(/[[\]\"]/g, "")}
                     onError={({currentTarget}) => currentTarget.src = FallbackImage}
                     className="h-90 mb-7 min-h-52 w-full self-stretch rounded-md object-cover cursor-pointer"
                     />
-                </a>
+                </Link>
                 <div className="font-urbanist">
                   <p className="mb-5 text-xl font-semibold h-[56px]">{title}</p>
                 </div>

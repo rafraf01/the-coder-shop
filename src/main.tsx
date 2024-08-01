@@ -20,16 +20,22 @@ const queryClient = new QueryClient({
 });
 
 const ProductsPage = lazy(() => import('./components/pages/product/Product'));
+const ProductDetailsPage = lazy(() => import('./components/pages/product-details/ProductDetails'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route path="" element={<Home />} />
-      <Route path="products" element={<Suspense>
-        <ProductsPage />
-      </Suspense>}>
-        <Route path=":productid" element={<ProductsPage />}></Route>
+      <Route path="products" element={
+        <Suspense>
+          <ProductsPage />
+        </Suspense>}>
       </Route>
+      <Route path="products/:productid" element={
+        <Suspense>
+          <ProductDetailsPage />
+        </Suspense>
+      } />
       <Route path="*" element={<NotFound />} />
     </Route>
   ),
