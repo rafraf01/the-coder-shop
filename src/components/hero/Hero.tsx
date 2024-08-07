@@ -78,7 +78,7 @@ const Hero = () => {
             </Button>
           </div>
           <div className="block lg:hidden xl:hidden absolute bottom-5 w-full">
-            <InPageMenu menu={inpageMenu} />
+            <InPageMenu menu={inpageMenu} onClick={() => navigate('products')} />
           </div>
         </div>
       </div>

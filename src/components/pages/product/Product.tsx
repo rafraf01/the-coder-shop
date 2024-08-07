@@ -1,11 +1,9 @@
-import {
-  useOutletContext,
-  useSearchParams,
-} from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import { Products } from "../../../types/types";
 import ProductCard from "../../product-card/ProductCard";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import classNames from "classnames";
+import NoResult from "../../no-results-found/NoResult";
 
 const Product = () => {
   const { products } = useOutletContext<Products>();
@@ -26,6 +24,17 @@ const Product = () => {
     setSearchParams({ category: id.toString() });
   };
 
+  useEffect(() => {
+    if (searchParams.get("category")) {
+      const newProduct = products.filter(
+        (product) =>
+          product.category.id.toString() === searchParams.get("category"),
+      );
+
+      setProductData(newProduct);
+    }
+  }, []);
+
   return (
     <section className="container m-auto px-[3.5rem] py-6">
       <div>
@@ -35,8 +44,7 @@ const Product = () => {
         <ul className="flex flex-wrap justify-center gap-2 py-4 font-urbanist xl:justify-end">
           <li
             className={classNames("text-md cursor-pointer text-gray-600", {
-              "border-b border-gray-600":
-                searchParams.get("category") === null,
+              "border-b border-gray-600": searchParams.get("category") === null,
             })}
             onClick={() => {
               setSearchParams(undefined);
@@ -53,7 +61,7 @@ const Product = () => {
                 key={menu.name}
                 onClick={() => filterProducts(menu.id)}
                 className={classNames("text-md cursor-pointer", {
-                  "font-semibold text-gray-700 border-b border-gray-700":
+                  "border-b border-gray-700 font-semibold text-gray-700":
                     isSelected && searchParams.get("category") !== null,
                 })}
               >
@@ -64,7 +72,11 @@ const Product = () => {
         </ul>
       </div>
       <Suspense>
-        <ProductCard products={productData} />
+        {productData.length === 0 ? (
+          <NoResult />
+        ) : (
+          <ProductCard products={productData} />
+        )}
       </Suspense>
     </section>
   );
