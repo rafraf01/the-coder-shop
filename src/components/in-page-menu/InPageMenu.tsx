@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface Props {
   menu: string[];
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const InPageMenu = ({ menu, onClick }: Props) => {

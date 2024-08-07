@@ -6,6 +6,7 @@ interface ButtonProps {
   buttonType?: "button" | "submit";
   variant?: "primary" | "secondary";
   hasIcon?: boolean;
+  onClick?: () => void;
 }
 const Button = ({
   className,
@@ -13,6 +14,7 @@ const Button = ({
   buttonType = "button",
   variant,
   hasIcon = false,
+  onClick
 }: ButtonProps) => {
   const primaryClass =
     "bg-white py-2 pr-2 pl-4 text-xs uppercase hover:bg-transparent hover:text-white border-2 border-gray-400/0.8 transition-all duration-300";
@@ -27,6 +29,7 @@ const Button = ({
 
   return (
     <button
+      onClick={onClick}
       type={buttonType}
       className={classNames(
         className,

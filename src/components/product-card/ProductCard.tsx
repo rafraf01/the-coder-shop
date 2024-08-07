@@ -2,13 +2,14 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Products } from "../../types/types";
 import FallbackImage from '../../assets/image/fallback.jpg';
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
 const ProductCard = ({ products }: Products) => {
   const [productData, setProductData] = useState(products);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProductData(productData);
@@ -18,7 +19,7 @@ const ProductCard = ({ products }: Products) => {
     {
         products.map((product) => {
           const {title, images,  price} = product;
-          const path = pathname === '/' ? `products/${product.id}` : `${product.id}`;
+          const path = pathname === '/' ? `products/details/${product.id}` : `details/${product.id}`;
             return (
               <div
                 key={product.id}
@@ -39,7 +40,7 @@ const ProductCard = ({ products }: Products) => {
                     <p className="text-xs text-gray-500">Price</p>
                     <p className="text-xl font-bold">$ {price}</p>
                   </div>
-                  <span className="cursor-pointer self-end rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-black">
+                  <span className="cursor-pointer self-end rounded-md bg-gray-700 p-2 text-sm text-white hover:bg-black" onClick={() => navigate('login')}>
                     <LuShoppingCart />
                   </span>
                 </div>

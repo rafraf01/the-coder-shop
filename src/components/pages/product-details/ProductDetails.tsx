@@ -48,15 +48,15 @@ const ProductDetails = () => {
           </div>
           <div className="flex flex-col gap-5">
             <h1 className="text-3xl">{currentProduct.title}</h1>
-            <div>
+            <p className="text-base text-gray-400">
+              {currentProduct.description}
+            </p>
+						<div>
               <p className="text-sm text-gray-500">Price</p>
               <p className="text-xl font-semibold">
                 ${currentProduct.price} USD
               </p>
             </div>
-            <p className="text-base text-gray-400">
-              {currentProduct.description}
-            </p>
             <Button
               className="max-w-32 font-semibold hover:text-red-900"
               variant="primary"

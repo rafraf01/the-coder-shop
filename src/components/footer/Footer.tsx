@@ -2,7 +2,7 @@ import { FiSend } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="mt-20 bg-gray-600">
+    <footer className="mt-20 bg-gray-600 flex-shrink-0">
       <div className="mx-10 h-full">
         <div className="grid gap-5 py-6 font-urbanist sm:grid-cols-12">
           <div className="col-span-12 text-sm text-white lg:col-span-4">

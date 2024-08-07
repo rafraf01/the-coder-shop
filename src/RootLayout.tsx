@@ -12,13 +12,13 @@ const Layout = () => {
   }
 
   return (
-    <>
+    <div className="flex flex-col h-[100%]">
       <Nav />
-      <main>
+      <main className="wrapper flex-[1_0_auto] items-stretch">
         <Outlet context={{products}}/>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

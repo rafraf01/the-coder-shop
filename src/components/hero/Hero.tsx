@@ -4,13 +4,15 @@ import { FiArrowDown } from "react-icons/fi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import Button from "../button/Button";
 import InPageMenu from "../in-page-menu/InPageMenu";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const inpageMenu = ['shop now', 'learn more', 'essentials']
+  const navigate = useNavigate();
   return (
     <div className="hero z-[97] w-full px-6">
-      <div className="hero-wrapper flex w-full flex-col justify-center gap-2 xl:flex-row">
-        <div className="flex h-full w-full flex-wrap gap-2">
+      <div className="hero-wrapper flex w-full flex-col justify-center gap-3 xl:flex-row">
+        <div className="flex h-full w-full flex-wrap gap-3">
           <div className="relative h-[500px] w-full rounded-3xl bg-stone-400/30 p-10">
             <h1 className="flex flex-wrap items-center gap-5 font-climatecrisis">
               <span className="text-2xl xl:text-5xl">where FASHION</span>
@@ -30,7 +32,7 @@ const Hero = () => {
               numquam voluptatibus.
             </p>
           </div>
-          <div className="flex h-[245px] w-full flex-row gap-2">
+          <div className="flex h-[245px] w-full flex-row gap-3">
             <div className="group relative h-full w-full rounded-3xl bg-model-1 bg-cover">
               <span className="text-md absolute bottom-0 p-5 font-climatecrisis tracking-[0.2em] text-white transition-all duration-500 xl:text-2xl xl:group-hover:scale-110">
                 #trend
@@ -50,7 +52,8 @@ const Hero = () => {
             className="pointer-events-none -z-40 h-full w-full rounded-3xl object-cover"
           />
           <div className="absolute bottom-0 hidden flex-wrap p-4 lg:flex xl:flex lg:w-full">
-            <Button className="z-50 h-10 w-10 justify-start rounded-full border-[1px] bg-white/30 font-urbanist font-semibold uppercase text-white backdrop-blur-sm transition-colors duration-300 hover:border-black hover:text-black lg:h-[60px] lg:w-[60px] xl:h-[60px] xl:w-[60px]">
+            <Button onClick={() => navigate('products')}
+            className="z-50 h-10 w-10 justify-start rounded-full border-[1px] bg-white/30 font-urbanist font-semibold uppercase text-white backdrop-blur-sm transition-colors duration-300 hover:border-black hover:text-black lg:h-[60px] lg:w-[60px] xl:h-[60px] xl:w-[60px]">
               shop now
             </Button>
             <Button
